@@ -65,14 +65,17 @@
 **Topics:** Python syntax, basic data types, control structures.  
 **Material:**
 - [x] Video: Python Programming Tutorial for Beginners. https://www.youtube.com/watch?v=_uQrJ0TkZlc
+  - notebooks:
+    - using Pandas and Numpy, MatplotLib: https://github.com/ine-rmotr-curriculum/FreeCodeCamp-Pandas-Real-Life-Example/blob/master/Exercises_1.ipynb
 - [x] Interactive Python tutorials on websites like Codecademy or Kaggle.
+  - Python basic, SciKit.learn, classification exercises: https://app.datawars.io/dashboard 
 - [x] Activity: Basic Python coding exercises.
 
 #### Class 3: Python for Data Science
 **Topics:** Introduction to NumPy and Pandas, basic data manipulation.  
 **Material:**
 
-- [ ] Jupyter notebooks with examples (can be found on GitHub repositories).
+- [x] Jupyter notebooks with examples (can be found on GitHub repositories).
 
 - [ ] Video: Data Analysis with Python - Full Course for Beginners. https://www.youtube.com/watch?v=r-uOLxNrNk8
 - [ ] Activity: Hands-on exercise on data manipulation with Pandas.
