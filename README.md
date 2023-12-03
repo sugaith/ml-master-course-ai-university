@@ -2,3 +2,5 @@
 
 **Professor: GPT-4**
 
+[College Course Syllabus](./ML_Master_Course_Open_AI_University.md)
+
