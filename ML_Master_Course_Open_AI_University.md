@@ -85,7 +85,8 @@
 - [ ] Coding Assignment: Simple Python scripts for data handling tasks using learned concepts.
 
 **Additional Resources:**
-- [ ] Access to interactive Python courses on platforms like Coursera, Codecademy, or Kaggle.
+- [x] Access to interactive Python courses on platforms like Coursera, Codecademy, or Kaggle.
+  - DataWars: https://app.datawars.io/login?redirect_to=https://app.datawars.io/dashboard
 - [ ] Forums for Q&A and discussion.
 
 
