@@ -138,3 +138,6 @@
 - [ ] Interactive Module: Khan Academy or Coursera lessons on Linear Algebra.
 - [ ] Activity: Solving linear algebra problems using Python.
 
+**Topic:** Measure Performance of Training
+**Material:**
+- [x] video: [Performance Measures](https://youtu.be/UA_ZAwPVLxg?si=GlmlWtw81d3sYzeL)
