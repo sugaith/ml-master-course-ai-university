@@ -113,6 +113,11 @@
   - [x] video: [Euler constant is everywhere!](https://www.youtube.com/watch?v=AAir4vcxRPU)
 
 #### Class 6: Neural Net Structure
+**Topic:** Structure of Neural-Nets
+**Material:**
+- [x] video: [MIT - Structure of Neural Nets for Deep Learning](https://www.youtube.com/watch?v=sx00s7nYmRM)
+- [x] video list: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
+
 **Topic:** Transformers
 **Material:**
 - [x] video: [What are Transformers?](https://www.youtube.com/watch?v=zxQyTK8quyY)
@@ -141,3 +146,8 @@
 **Topic:** Measure Performance of Training
 **Material:**
 - [x] video: [Performance Measures](https://youtu.be/UA_ZAwPVLxg?si=GlmlWtw81d3sYzeL)
+
+#### Class 7: Practical - Build a Neural Net from Scratch
+**Material:**
+- [x] video list: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
+- [Project HERE](./my-neuron-network) 
