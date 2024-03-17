@@ -116,6 +116,7 @@
 **Topic:** Structure of Neural-Nets
 **Material:**
 - [x] video: [MIT - Structure of Neural Nets for Deep Learning](https://www.youtube.com/watch?v=sx00s7nYmRM)
+- [ ] video: [MIT - Backpropagation: Find Partial Derivatives](https://www.youtube.com/watch?v=lZrIPRnoGQQ)
 - [x] video list: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
 
 **Topic:** Transformers
@@ -128,26 +129,48 @@
 **Material:**
 
 #### Class 7: Back Propagation & Gradient Descent
-**Topic:** Back Propagation Functions
+**Topic:** Backpropagation introduction
 **Material:**
-- [x] video: [Loss, cost, negative gradient and Back Propagation](https://www.youtube.com/watch?v=Ilg3gGewQ5U)
+- [x] video: [Loss, cost, negative gradient and Backpropagation](https://www.youtube.com/watch?v=Ilg3gGewQ5U)
 - [x] video: [Backpropagation Calculus](https://www.youtube.com/watch?v=tIeHLnjs5U8)
+- [ ] video: [Neural Nets and the Learning Function](https://www.youtube.com/watch?v=L3-WFKCW-tY)
 
 **Topic:** Understanding Gradient Descent
 **Material:**
 - [x] video: [Gradient Descend in 3 minutes](https://www.youtube.com/watch?v=qg4PchTECck)
 - [x] video: [Gradient Descend in Deep Neuro Network](https://www.youtube.com/watch?v=IHZwWFHWa-w)
+- [ ] video: [Stanford CS229 - Linear Regression and Gradient Descend](https://www.youtube.com/watch?v=4b4MUYve_U8)
 - [ ] video: [MIT CLASS - Stochastic Gradient Descent](https://www.youtube.com/watch?v=k3AiUhwHQ28)
 - [x] video: [Stochastic Gradient Descent Classifier - Using MNIST dataset](https://youtu.be/aXpsCyXXMJE?si=GY2aN6qnD0tQKZgY)
   - [x] video: [Understanding Euler Constant](https://www.youtube.com/watch?v=AuA2EAgAegE) 
 - [ ] Interactive Module: Khan Academy or Coursera lessons on Linear Algebra.
 - [ ] Activity: Solving linear algebra problems using Python.
+- [x] [Gradient Descent BEST EXPLANATION WITH CODE](https://www.youtube.com/watch?v=jwStsp8JUPU)
 
 **Topic:** Measure Performance of Training
 **Material:**
 - [x] video: [Performance Measures](https://youtu.be/UA_ZAwPVLxg?si=GlmlWtw81d3sYzeL)
 
-#### Class 7: Practical - Build a Neural Net from Scratch
+
+### Week 3: HANDS ON: build a Neuron Net from scratch
+
+#### Class 8: Practical - Build a Neural Net from Scratch
 **Material:**
-- [x] video list: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
+- [x] build a Perceptron: [Coding Train -  Perceptron Part 1](https://youtu.be/ntKn5TPHHAk?si=Y96ZTbQiZ1wvKQqI)
 - [Project HERE](./my-neuron-network) 
+- **TODO** LINK PROJECT!!
+
+
+### Week 4: HANDS ON: build a Neuron Net from scratch + Learning Algorithms
+
+#### Class 8 continuation: Practical - Build a Neural Net from Scratch
+**Material:**
+- [x] training the Perceptron and test with pygame: [Coding Train](https://youtu.be/ntKn5TPHHAk?list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&t=1342)
+- [ ] build Neural-net: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
+- [Project HERE](./my-neuron-network) 
+- **TODO** LINK PROJECT!!
+
+#### Class 9: Genetic Algorithms
+**Material:**
+- [ ] search..... NEAT - Neuro Evolution of Augmented Topology
+- [ ] search..... PPO - Proximal Policy Optimization

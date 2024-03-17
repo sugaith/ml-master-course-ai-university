@@ -14,8 +14,8 @@ neural_network_project/
 │   │   └── __init__.py     
 │   ├── model/              # Neural network model implementation
 │   │   ├── __init__.py
-│   │   └── perceptron.py
-│   │   └── neural-net.py
+│   │   └── Perceptron.py
+│   │   └── neural_net.py
 │   ├── utils/              # Utility functions, e.g., for data preprocessing
 │   │   ├── __init__.py
 │   │   └── preprocess.py
@@ -27,16 +27,18 @@ neural_network_project/
 
 ```
 
+# Run environment
 
-# Apply Conda Environment
+## Apply Conda Environment
 
 Use Anaconda! To create an env in coda, open conda shell and:
 
 - create and activate a conda env called neural-net
 `conda create --name neural-net python=3.9`
 `conda activate neural-net`
+
 - to install packages
 `conda install --file=requirements.txt`
-`pip install -r requirements.txt`
+AND/OR `pip install -r requirements.txt`
 
 
