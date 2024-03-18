@@ -9,7 +9,7 @@ class Perceptron:
         self.activation = activation_function
 
     def guess(self, inputs: np.ndarray) -> np.float32:
-        dot_product = np.dot(inputs, self.weights) + self.bias
+        dot_product = np.dot(inputs, self.weights)  # + self.bias
         return self.activation(dot_product)
 
     def train(self, inputs: np.ndarray, targets: np.float32) -> None:

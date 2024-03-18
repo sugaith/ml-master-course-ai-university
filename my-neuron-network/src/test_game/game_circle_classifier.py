@@ -1,5 +1,9 @@
+import numpy as np
 import pygame as pygame
-import random
+from src.test_game.Point import Point
+from typing import List
+from src.model.Perceptron import Perceptron
+from src.model.activation_functions import step
 
 # Initialize Pygame
 pygame.init()
@@ -13,26 +17,16 @@ pygame.display.set_caption("Random Circles")
 # Define colors
 black = (0, 0, 0)
 red = (255, 0, 0)
+green = (0, 255, 0)
 white = (255, 255, 255)
-
-
-# Function to draw circles
-def draw_circle(x, y):
-    radius = 45  # Randomize the radius
-
-    color = red if x > y else black
-
-    pygame.draw.circle(screen, color, (x, y), radius)
-    pygame.draw.circle(screen, white, (x, y), radius, 3)  # White border
-
-
-positions = [
-    {'x': random.randint(0, screen_width), 'y': random.randint(0, screen_height)}
-    for _ in range(60)
-]
 
 # Fill the background with black color
 screen.fill(black)
+
+# initiate points
+points: List[Point] = [Point(screen) for _ in range(100)]
+
+perceptron = Perceptron(step)
 
 # Main loop
 running = True
@@ -42,8 +36,11 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    for pos in positions:
-        draw_circle(pos['x'], pos['y'])
+    for point in points:
+        point.draw()
+        guess = perceptron.guess(np.array([point.x, point.y]))
+        point.set_fill(green if guess == point.label else red)
+        # pygame.time.delay(3)
 
     # Update the display
     pygame.display.flip()

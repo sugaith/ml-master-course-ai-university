@@ -9,3 +9,8 @@ def sigmoid(new_input: np.float32) -> np.float32:
 def hyperbolic_tangent(new_input: np.float32) -> np.float32:
     # normalizes the input returning a float between -1 and 1
     return np.tanh([new_input])[0]
+
+
+def step(new_input: np.float32) -> int:
+    ht = hyperbolic_tangent(new_input)
+    return 1 if ht > 0 else 0
