@@ -25,8 +25,20 @@ screen.fill(black)
 
 # initiate points
 points: List[Point] = [Point(screen) for _ in range(100)]
-
 perceptron = Perceptron(step)
+
+
+def main_loop_content():
+    for point in points:
+        point.draw()
+        point_position = np.array([point.x, point.y])
+
+        perceptron.train(point_position, point.label)
+
+        guess = perceptron.guess(point_position)
+
+        point.set_fill(green if guess == point.label else red)
+
 
 # Main loop
 running = True
@@ -36,12 +48,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    for point in points:
-        point.draw()
-        guess = perceptron.guess(np.array([point.x, point.y]))
-        point.set_fill(green if guess == point.label else red)
-        # pygame.time.delay(3)
-
+    main_loop_content()
+    # pygame.time.delay(3)
     # Update the display
     pygame.display.flip()
 
