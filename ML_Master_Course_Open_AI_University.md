@@ -157,7 +157,7 @@
 #### Class 8: Practical - Build a Neural Net from Scratch
 **Material:**
 - [x] build a Perceptron: [Coding Train -  Perceptron Part 1](https://youtu.be/ntKn5TPHHAk?si=Y96ZTbQiZ1wvKQqI)
-- [Project HERE](./my-neuron-network) 
+- [Project HERE](./my-neural-network) 
 - **TODO** LINK PROJECT!!
 
 
@@ -167,7 +167,7 @@
 **Material:**
 - [x] training the Perceptron and test with pygame: [Coding Train](https://youtu.be/ntKn5TPHHAk?list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&t=1342)
 - [ ] build Neural-net: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
-- [Project HERE](./my-neuron-network) 
+- [Project HERE](./my-neural-network) 
 - **TODO** LINK PROJECT!!
 
 #### Class 9: Genetic Algorithms

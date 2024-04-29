@@ -60,42 +60,62 @@ class NeuralNet:
         # multiply again by the learning rate
         output_gradients = np.vectorize(sigmoid_gradient)(outputs)
         output_error_gradients = np.matmul(output_gradients, output_errors)
-        output_error_gradients_over_learning_rate = np.matmul(output_error_gradients, self.learning_rate)
+        output_error_gradients_over_learning_rate = output_error_gradients * self.learning_rate
+
+        # --- update hidden to output weights and the output layer biases
 
         # # Calculate hidden2output Deltas
-        transposed_hidden = np.transpose(inputs2hidden)
-        weights_hidden2output_delta = np.matmul(output_error_gradients_over_learning_rate, transposed_hidden)
+        weights_hidden2output_delta = np.matmul(output_error_gradients_over_learning_rate, inputs2hidden.transpose())
 
         # # Update `weights_hidden2output` with the calculated Deltas (using addition)
-        # todo: is this correct??????
         self.weights_hidden2output += weights_hidden2output_delta
+        # # Update the bias with the error gradient
+        self.biases_output += output_error_gradients_over_learning_rate
+        # todo: is the above correct??????
+
+        # --- update inputs to hidden weights and the input biases
 
         # # Calculate the Hidden-layer Error
-        weights_hidden2output_transposed = np.transpose(self.weights_hidden2output)
-        hidden_errors = np.matmul(weights_hidden2output_transposed, output_errors)
-
+        hidden_errors = np.matmul(self.weights_hidden2output.T, output_errors)
         # # Calculate the gradient for Hidden Layer
         hidden_gradients = np.vectorize(sigmoid_gradient)(inputs2hidden)
         hidden_error_gradients = np.matmul(hidden_gradients, hidden_errors)
         hidden_gradients_over_learning_rate = np.matmul(hidden_error_gradients, self.learning_rate)
 
         # # Calculate input2hidden Deltas
-        transposed_inputs = np.transpose(inputs)
-        weights_inputs2hidden_delta = np.matmul(hidden_gradients_over_learning_rate, transposed_inputs)
+        weights_inputs2hidden_delta = np.matmul(hidden_gradients_over_learning_rate, inputs.T)
 
         # # Update `weights_inputs2hidden` with the calculated Deltas (addition)
-        # todo: is this correct???
         self.weights_inputs2hidden += weights_inputs2hidden_delta
-
-
-
-
-
-
+        self.biases_hidden += hidden_gradients_over_learning_rate
+        # todo: is the above correct???
 
 
 if __name__ == '__main__':
-    nn = NeuralNet(2, 2, 2, activation=sigmoid)
-    output = nn.back_propagation(np.array([1, 0]), np.array([0.5, 0.5]))
-    # print('output')
-    # print(output)
+    nn = NeuralNet(2, 2, 1, activation=sigmoid)
+
+    # XOR TEST
+    xor_training_data = [
+        {
+            'inputs': np.array([0, 0]),
+            'targets': np.array([0])
+        },
+        {
+            'inputs': np.array([1, 1]),
+            'targets': np.array([0])
+        },
+        {
+            'inputs': np.array([1, 0]),
+            'targets': np.array([1])
+        },
+        {
+            'inputs': np.array([0, 1]),
+            'targets': np.array([1])
+        },
+    ]
+
+    for _ in range(9000):
+        for data in xor_training_data:
+            nn.back_propagation(data.get('inputs'), data.get('targets'))
+
+    print(nn.feed_forward(np.array([1, 0])))
