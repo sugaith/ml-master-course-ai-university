@@ -12,7 +12,7 @@ def sigmoid_gradient(sigmoid_input: np.float32 | np.ndarray) -> np.float32 | np.
 
 def hyperbolic_tangent(new_input: np.float32 | np.ndarray) -> np.float32 | np.ndarray:
     # normalizes the input returning a float between -1 and 1
-    return np.tanh([new_input])[0]
+    return np.tanh([new_input])
 
 
 def step(new_input: np.float32) -> int:

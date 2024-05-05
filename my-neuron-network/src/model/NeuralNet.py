@@ -73,34 +73,33 @@ class NeuralNet:
 
 
 if __name__ == '__main__':
+    # XOR TEST
+    xor_training_data = [
+        {
+            'inputs': np.array([0, 0]),
+            'targets': np.array([0])
+        },
+        {
+            'inputs': np.array([1, 1]),
+            'targets': np.array([0])
+        },
+        {
+            'inputs': np.array([1, 0]),
+            'targets': np.array([1])
+        },
+        {
+            'inputs': np.array([0, 1]),
+            'targets': np.array([1])
+        },
+    ]
+
     for _ in range(9):
-        print(_)
-        print('.......')
+        print(str(_) + '.......')
         nn = NeuralNet(
             2, 4, 1,
             activation=sigmoid,
             learning_rate=np.float32(.3)
         )
-
-        # XOR TEST
-        xor_training_data = [
-            {
-                'inputs': np.array([0, 0]),
-                'targets': np.array([0])
-            },
-            {
-                'inputs': np.array([1, 1]),
-                'targets': np.array([0])
-            },
-            {
-                'inputs': np.array([1, 0]),
-                'targets': np.array([1])
-            },
-            {
-                'inputs': np.array([0, 1]),
-                'targets': np.array([1])
-            },
-        ]
 
         print(' UN-trained output ....  ')
         print(nn.feed_forward(np.array([0, 0])))
