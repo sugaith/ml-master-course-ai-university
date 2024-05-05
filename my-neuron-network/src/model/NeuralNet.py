@@ -99,7 +99,7 @@ if __name__ == '__main__':
         },
     ]
 
-    for _ in range(15000):
+    for _ in range(50000):
         # random_index = np.random.choice(len(xor_training_data))
         # data = xor_training_data[random_index]
         for data in xor_training_data:
