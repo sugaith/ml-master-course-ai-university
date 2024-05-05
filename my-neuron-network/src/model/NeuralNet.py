@@ -23,19 +23,19 @@ class NeuralNet:
         self.learning_rate = learning_rate
 
     def feed_forward(self, inputs: np.ndarray) -> np.ndarray:
-        inputs2hidden: np.ndarray = np.matmul(inputs, self.weights_inputs2hidden)
-        inputs2hidden = np.add(inputs2hidden, self.biases_hidden)
+        inputs2hidden: np.ndarray = np.matmul(inputs, self.weights_inputs2hidden.T)
+        inputs2hidden += self.biases_hidden
         inputs2hidden = self.activation(inputs2hidden)
 
         hidden2output: np.ndarray = np.matmul(inputs2hidden, self.weights_hidden2output)
-        hidden2output = np.add(hidden2output, self.biases_output)
+        hidden2output += self.biases_output
         hidden2output = self.activation(hidden2output)
 
         return hidden2output
 
     def back_propagation(self, inputs: np.ndarray, targets: np.ndarray):
         # --- Apply feed_forward
-        inputs2hidden: np.ndarray = np.matmul(inputs, self.weights_inputs2hidden)
+        inputs2hidden: np.ndarray = np.matmul(inputs, self.weights_inputs2hidden.T)
         inputs2hidden = np.add(inputs2hidden, self.biases_hidden)
         inputs2hidden = self.activation(inputs2hidden)
 
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     nn = NeuralNet(
         2, 2, 1,
         activation=sigmoid,
-        learning_rate=np.float32(.1)
+        learning_rate=np.float32(.3)
     )
 
     # XOR TEST
@@ -99,7 +99,13 @@ if __name__ == '__main__':
         },
     ]
 
-    for _ in range(50000):
+    print(' UN-trained output ....  ')
+    print(nn.feed_forward(np.array([0, 0])))
+    print(nn.feed_forward(np.array([1, 1])))
+    print(nn.feed_forward(np.array([1, 0])))
+    print(nn.feed_forward(np.array([0, 1])))
+
+    for _ in range(60000):
         # random_index = np.random.choice(len(xor_training_data))
         # data = xor_training_data[random_index]
         for data in xor_training_data:
