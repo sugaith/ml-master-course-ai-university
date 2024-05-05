@@ -73,47 +73,50 @@ class NeuralNet:
 
 
 if __name__ == '__main__':
-    nn = NeuralNet(
-        2, 2, 1,
-        activation=sigmoid,
-        learning_rate=np.float32(.3)
-    )
+    for _ in range(9):
+        print(_)
+        print('.......')
+        nn = NeuralNet(
+            2, 4, 1,
+            activation=sigmoid,
+            learning_rate=np.float32(.3)
+        )
 
-    # XOR TEST
-    xor_training_data = [
-        {
-            'inputs': np.array([0, 0]),
-            'targets': np.array([0])
-        },
-        {
-            'inputs': np.array([1, 1]),
-            'targets': np.array([0])
-        },
-        {
-            'inputs': np.array([1, 0]),
-            'targets': np.array([1])
-        },
-        {
-            'inputs': np.array([0, 1]),
-            'targets': np.array([1])
-        },
-    ]
+        # XOR TEST
+        xor_training_data = [
+            {
+                'inputs': np.array([0, 0]),
+                'targets': np.array([0])
+            },
+            {
+                'inputs': np.array([1, 1]),
+                'targets': np.array([0])
+            },
+            {
+                'inputs': np.array([1, 0]),
+                'targets': np.array([1])
+            },
+            {
+                'inputs': np.array([0, 1]),
+                'targets': np.array([1])
+            },
+        ]
 
-    print(' UN-trained output ....  ')
-    print(nn.feed_forward(np.array([0, 0])))
-    print(nn.feed_forward(np.array([1, 1])))
-    print(nn.feed_forward(np.array([1, 0])))
-    print(nn.feed_forward(np.array([0, 1])))
+        print(' UN-trained output ....  ')
+        print(nn.feed_forward(np.array([0, 0])))
+        print(nn.feed_forward(np.array([1, 1])))
+        print(nn.feed_forward(np.array([1, 0])))
+        print(nn.feed_forward(np.array([0, 1])))
 
-    for _ in range(60000):
-        # random_index = np.random.choice(len(xor_training_data))
-        # data = xor_training_data[random_index]
-        for data in xor_training_data:
-            nn.back_propagation(data.get('inputs'), data.get('targets'))
+        for _ in range(60000):
+            # random_index = np.random.choice(len(xor_training_data))
+            # data = xor_training_data[random_index]
+            for data in xor_training_data:
+                nn.back_propagation(data.get('inputs'), data.get('targets'))
 
-    print(' trained output ....  ')
-    print(nn.feed_forward(np.array([0, 0])))
-    print(nn.feed_forward(np.array([1, 1])))
-    print(nn.feed_forward(np.array([1, 0])))
-    print(nn.feed_forward(np.array([0, 1])))
+        print(' trained output ....  ')
+        print(nn.feed_forward(np.array([0, 0])))
+        print(nn.feed_forward(np.array([1, 1])))
+        print(nn.feed_forward(np.array([1, 0])))
+        print(nn.feed_forward(np.array([0, 1])))
 
