@@ -16,19 +16,19 @@ class NeuralNet:
         self.weights_inputs2hidden: np.ndarray = np.random.randn(hidden_count, input_count)
         self.weights_hidden2output: np.ndarray = np.random.randn(hidden_count, output_count)
 
-        self.biases_hidden: np.ndarray = np.random.randn(hidden_count)
-        self.biases_output: np.ndarray = np.random.randn(output_count)
+        self.hidden_biases: np.ndarray = np.random.randn(hidden_count)
+        self.output_biases: np.ndarray = np.random.randn(output_count)
 
         self.activation = activation
         self.learning_rate = learning_rate
 
     def feed_forward(self, inputs: np.ndarray) -> np.ndarray:
         inputs2hidden: np.ndarray = np.matmul(inputs, self.weights_inputs2hidden.T)
-        inputs2hidden += self.biases_hidden
+        inputs2hidden += self.hidden_biases
         inputs2hidden = self.activation(inputs2hidden)
 
         hidden2output: np.ndarray = np.matmul(inputs2hidden, self.weights_hidden2output)
-        hidden2output += self.biases_output
+        hidden2output += self.output_biases
         hidden2output = self.activation(hidden2output)
 
         return hidden2output
@@ -36,11 +36,11 @@ class NeuralNet:
     def back_propagation(self, inputs: np.ndarray, targets: np.ndarray):
         # --- Apply feed_forward
         inputs2hidden: np.ndarray = np.matmul(inputs, self.weights_inputs2hidden.T)
-        inputs2hidden = np.add(inputs2hidden, self.biases_hidden)
+        inputs2hidden = np.add(inputs2hidden, self.hidden_biases)
         inputs2hidden = self.activation(inputs2hidden)
 
         hidden2output: np.ndarray = np.matmul(inputs2hidden, self.weights_hidden2output)
-        hidden2output = np.add(hidden2output, self.biases_output)
+        hidden2output = np.add(hidden2output, self.output_biases)
         outputs = self.activation(hidden2output)
 
         # # Calculate errors (targets - outputs) and extract error gradients
@@ -55,7 +55,7 @@ class NeuralNet:
         # Update `weights_hidden2output` with the calculated Deltas
         self.weights_hidden2output += weights_hidden2output_delta.T
         # Update the bias with the error gradient
-        self.biases_output += output_error_gradients_over_learning_rate
+        self.output_biases += output_error_gradients_over_learning_rate
 
         # --- Update inputs-to-hidden weights and the input biases
         # Calculate errors Hidden-layer error and extract the gradients
@@ -69,7 +69,7 @@ class NeuralNet:
         # Update `weights_inputs2hidden` with the calculated Deltas
         self.weights_inputs2hidden += weights_inputs2hidden_delta
         # Update the bias with the error gradient
-        self.biases_hidden += hidden_gradients_over_learning_rate
+        self.hidden_biases += hidden_gradients_over_learning_rate
 
 
 if __name__ == '__main__':
