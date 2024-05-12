@@ -2,22 +2,30 @@ import random
 
 import numpy as np
 from src.model.activation_functions import sigmoid, sigmoid_gradient
+from src.model.initialization_functons import INIT_TYPE, xavier_normal_distribution, xavier_uniform_distribution
 
 
 class NeuralNet:
     def __init__(self,
                  input_count: int, hidden_count: int, output_count: int,
                  activation: callable(np.float32),
+                 initialization: callable(INIT_TYPE) = None,
                  learning_rate: np.float32 = 0.1):
         self.input_count = input_count
         self.hidden_count = hidden_count
         self.output_count = output_count
-
         self.weights_inputs2hidden: np.ndarray = np.random.randn(hidden_count, input_count)
         self.weights_hidden2output: np.ndarray = np.random.randn(hidden_count, output_count)
 
-        self.hidden_biases: np.ndarray = np.random.randn(hidden_count)
-        self.output_biases: np.ndarray = np.random.randn(output_count)
+        if initialization is not None:
+            initialization(
+                input_count, hidden_count, output_count,
+                self.weights_inputs2hidden,
+                self.weights_hidden2output,
+            )
+
+        self.hidden_biases: np.ndarray = np.zeros(hidden_count)
+        self.output_biases: np.ndarray = np.zeros(output_count)
 
         self.activation = activation
         self.learning_rate = learning_rate
@@ -96,9 +104,10 @@ if __name__ == '__main__':
     for _ in range(9):
         print(str(_) + '.......')
         nn = NeuralNet(
-            2, 4, 1,
+            2, 2, 1,
+            initialization=xavier_normal_distribution,
             activation=sigmoid,
-            learning_rate=np.float32(.3)
+            learning_rate=np.float32(.1)
         )
 
         print(' UN-trained output ....  ')
