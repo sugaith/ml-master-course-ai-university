@@ -104,10 +104,10 @@ if __name__ == '__main__':
     for _ in range(9):
         print(str(_) + '.......')
         nn = NeuralNet(
-            2, 2, 1,
+            2, 3, 1,
             initialization=xavier_normal_distribution,
             activation=sigmoid,
-            learning_rate=np.float32(.1)
+            learning_rate=np.float32(.3)
         )
 
         print(' UN-trained output ....  ')
