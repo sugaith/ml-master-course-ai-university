@@ -133,18 +133,19 @@
 **Material:**
 - [x] video: [Loss, cost, negative gradient and Backpropagation](https://www.youtube.com/watch?v=Ilg3gGewQ5U)
 - [x] video: [Backpropagation Calculus](https://www.youtube.com/watch?v=tIeHLnjs5U8)
-- [ ] video: [Neural Nets and the Learning Function](https://www.youtube.com/watch?v=L3-WFKCW-tY)
+- [x] video: [Neural Nets and the Learning Function](https://www.youtube.com/watch?v=L3-WFKCW-tY)
 
 **Topic:** Understanding Gradient Descent
 **Material:**
 - [x] video: [Gradient Descend in 3 minutes](https://www.youtube.com/watch?v=qg4PchTECck)
 - [x] video: [Gradient Descend in Deep Neuro Network](https://www.youtube.com/watch?v=IHZwWFHWa-w)
-- [ ] video: [Stanford CS229 - Linear Regression and Gradient Descend](https://www.youtube.com/watch?v=4b4MUYve_U8)
-- [ ] video: [MIT CLASS - Stochastic Gradient Descent](https://www.youtube.com/watch?v=k3AiUhwHQ28)
+- [x] video: [MIT CLASS - Matrices](https://www.youtube.com/watch?v=0Qws8BuK3RQ)
+- [x] video: [Stanford CS229 - Linear Regression and Gradient Descend](https://www.youtube.com/watch?v=4b4MUYve_U8)
+- [x] video: [MIT CLASS - Stochastic Gradient Descent](https://www.youtube.com/watch?v=k3AiUhwHQ28)
 - [x] video: [Stochastic Gradient Descent Classifier - Using MNIST dataset](https://youtu.be/aXpsCyXXMJE?si=GY2aN6qnD0tQKZgY)
   - [x] video: [Understanding Euler Constant](https://www.youtube.com/watch?v=AuA2EAgAegE) 
-- [ ] Interactive Module: Khan Academy or Coursera lessons on Linear Algebra.
-- [ ] Activity: Solving linear algebra problems using Python.
+- [x] Interactive Module: Khan Academy or Coursera lessons on Linear Algebra.
+- [x] Activity: Solving linear algebra problems using Python.
 - [x] [Gradient Descent BEST EXPLANATION WITH CODE](https://www.youtube.com/watch?v=jwStsp8JUPU)
 
 **Topic:** Measure Performance of Training
@@ -166,9 +167,9 @@
 #### Class 8 continuation: Practical - Build a Neural Net from Scratch
 **Material:**
 - [x] training the Perceptron and test with pygame: [Coding Train](https://youtu.be/ntKn5TPHHAk?list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&t=1342)
-- [ ] build Neural-net: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
-- [Project HERE](./my-neural-network) 
-- **TODO** LINK PROJECT!!
+- [x] build Neural-net: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
+- [Project HERE](./my-neuron-network/src/model/NeuralNet.py) 
+- =))))))
 
 #### Class 9: Genetic Algorithms
 **Material:**
