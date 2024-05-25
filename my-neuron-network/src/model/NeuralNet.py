@@ -1,8 +1,6 @@
-import random
-
 import numpy as np
 from src.model.activation_functions import sigmoid, sigmoid_gradient
-from src.model.initialization_functons import INIT_TYPE, xavier_normal_distribution, xavier_uniform_distribution
+from src.model.initialization_functons import INIT_TYPE, xavier_normal_distribution
 
 
 class NeuralNet:
@@ -117,8 +115,6 @@ if __name__ == '__main__':
         print(nn.feed_forward(np.array([0, 1])))
 
         for _ in range(60000):
-            # random_index = np.random.choice(len(xor_training_data))
-            # data = xor_training_data[random_index]
             for data in xor_training_data:
                 nn.back_propagation(data.get('inputs'), data.get('targets'))
 
