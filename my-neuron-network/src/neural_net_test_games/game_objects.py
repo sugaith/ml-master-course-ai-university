@@ -51,7 +51,6 @@ class Bird:
             if pipe.x_position < bird_x < pipe.x_position + PIPE_WIDTH:
                 if bird_y_up < pipe.up_pipe_height or bird_y_down > pipe.up_pipe_height + pipe.gap:
                     return True
-
         return False
 
     def draw(self) -> None:

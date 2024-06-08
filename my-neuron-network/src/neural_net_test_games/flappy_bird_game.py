@@ -21,7 +21,7 @@ bird_radius = BIRD_RADIUS
 bird_velocity = 0
 
 gravity = 0.2
-jump_strength = -3
+jump_strength = -4
 
 pipe_width = 30
 pipe_gap_min = 150
@@ -66,9 +66,7 @@ while running:
     print('does it collide?  ', my_bird.does_it_collide(pipes))
     running = not my_bird.does_it_collide(pipes)
 
-    # Increment score 
-    # if pipes[0][0] < bird_x + bird_radius and running:
-    #     score += 1
+    """ Implement Score """
 
     # DRAW ALL THE SHIT
     screen.fill(BLACK)
