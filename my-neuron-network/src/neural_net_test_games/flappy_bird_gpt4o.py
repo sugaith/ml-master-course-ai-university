@@ -1,12 +1,12 @@
 import pygame
 import random
-from src.neural_net_test_games.Bird import BIRD_RADIUS, Bird
+from src.neural_net_test_games.game_objects import BIRD_RADIUS, Bird, Pipe, PIPE_WIDTH
 
 # Initialize pygame
 pygame.init()
 
 # Screen dimensions
-WIDTH, HEIGHT = 900, 600
+WIDTH, HEIGHT = 1200, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Flappy Bird")
 
@@ -20,8 +20,8 @@ my_bird = Bird(y=HEIGHT//2, screen=screen)
 bird_radius = BIRD_RADIUS
 bird_velocity = 0
 
-gravity = 0.4
-jump_strength = -5
+gravity = 0.2
+jump_strength = -3
 
 pipe_width = 30
 pipe_gap_min = 150
@@ -34,21 +34,14 @@ score = 0
 # Font for score
 font = pygame.font.SysFont(None, 36)
 
-
-# Function to create new pipe
-def create_pipe():
-    pipe_height = random.randint(0, HEIGHT // 3)
-    pipe_gap = random.randint(pipe_gap_min, pipe_gap_max)
-    return [WIDTH, pipe_height, pipe_height // 2 + pipe_gap]
-
-
 # Main game loop
 running = True
 clock = pygame.time.Clock()
 
 # Create initial pipes
-for i in range(2):
-    pipes.append(create_pipe())
+for i in range(4):
+    ini_pos = screen.get_width() + i * 300
+    pipes.append(Pipe(screen, ini_pos))
 
 while running:
     for event in pygame.event.get():
@@ -62,32 +55,28 @@ while running:
     my_bird.y += bird_velocity
 
     # Update pipes
-    pipes = [[x + pipe_velocity, h1, h2] for x, h1, h2 in pipes if x + pipe_velocity > -pipe_width]
-
-    # Add new pipe if needed
-    if pipes[-1][0] < WIDTH // 2:
-        pipes.append(create_pipe())
+    for pipe in pipes:
+        if pipe.x_position + pipe_velocity > -PIPE_WIDTH:
+            pipe.x_position += pipe_velocity
+        else:
+            pipe.x_position = screen.get_width()
+            pipe.reset_pipe_structure()
 
     # Check for collisions
-    for x, h1, h2 in pipes:
-        if my_bird.x + bird_radius > x and my_bird.x - bird_radius < x + pipe_width:
-            if my_bird.y - bird_radius < h1 or my_bird.y + bird_radius > h2:
-                running = False
-
-    if my_bird.y + bird_radius > HEIGHT or my_bird.y - bird_radius < 0:
-        running = False
+    print('does it collide?  ', my_bird.does_it_collide(pipes))
+    running = not my_bird.does_it_collide(pipes)
 
     # Increment score 
     # if pipes[0][0] < bird_x + bird_radius and running:
     #     score += 1
 
-    # Draw everything
+    # DRAW ALL THE SHIT
     screen.fill(BLACK)
-    # pygame.draw.circle(screen, WHITE, (bird_x, my_bird.y), bird_radius)
+
     my_bird.draw()
-    for x, h1, h2 in pipes:
-        pygame.draw.rect(screen, WHITE, (x, 0, pipe_width, h1))
-        pygame.draw.rect(screen, WHITE, (x, h2, pipe_width, HEIGHT - h2))
+
+    for pipe in pipes:
+        pipe.draw()
 
     score_text = font.render(str(score), True, WHITE)
     screen.blit(score_text, (10, 10))
