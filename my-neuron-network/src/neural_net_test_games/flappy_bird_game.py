@@ -1,6 +1,5 @@
 import pygame
-import random
-from src.neural_net_test_games.game_objects import BIRD_RADIUS, Bird, Pipe, PIPE_WIDTH
+from src.neural_net_test_games.game_objects import Bird, Pipe, PIPE_WIDTH, get_closest_pipe
 
 # Initialize pygame
 pygame.init()
@@ -12,27 +11,15 @@ pygame.display.set_caption("Flappy Bird")
 
 # Colors
 BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+WHITE = (255, 255, 255, .5)
 
 # Game variables
-my_bird = Bird(y=HEIGHT//2, screen=screen)
-
-bird_radius = BIRD_RADIUS
-bird_velocity = 0
-
 gravity = 0.2
-jump_strength = -4
-
-pipe_width = 30
-pipe_gap_min = 150
-pipe_gap_max = 260
 pipe_velocity = -3
+
 pipes = []
-
-score = 0
-
-# Font for score
-font = pygame.font.SysFont(None, 36)
+my_bird = Bird(y=HEIGHT//2, screen=screen, gravity=gravity)
+ai_birds = [Bird(y=HEIGHT//2, screen=screen, gravity=gravity, color=WHITE)]
 
 # Main game loop
 running = True
@@ -44,15 +31,15 @@ for i in range(4):
     pipes.append(Pipe(screen, ini_pos))
 
 while running:
+    screen.fill(BLACK)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-            bird_velocity = jump_strength
+            my_bird.jump()
 
-    # Update bird position
-    bird_velocity += gravity
-    my_bird.y += bird_velocity
+    for ai_bird in ai_birds:
+        ai_bird.think(get_closest_pipe(pipes))
 
     # Update pipes
     for pipe in pipes:
@@ -63,21 +50,16 @@ while running:
             pipe.reset_pipe_structure()
 
     # Check for collisions
-    print('does it collide?  ', my_bird.does_it_collide(pipes))
-    running = not my_bird.does_it_collide(pipes)
+    # running = not my_bird.does_it_collide(pipes)
 
-    """ Implement Score """
+    # FLY THE BIRDS
+    my_bird.fly()
+    for ai_bird in ai_birds:
+        ai_bird.fly()
 
-    # DRAW ALL THE SHIT
-    screen.fill(BLACK)
-
-    my_bird.draw()
-
+    # DRAW PIPES
     for pipe in pipes:
         pipe.draw()
-
-    score_text = font.render(str(score), True, WHITE)
-    screen.blit(score_text, (10, 10))
 
     pygame.display.flip()
     clock.tick(60)
