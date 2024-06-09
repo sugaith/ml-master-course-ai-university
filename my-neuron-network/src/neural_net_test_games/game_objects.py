@@ -1,7 +1,7 @@
 from typing import List
 import random
 import numpy as np
-from pygame import Surface, draw, Rect, mask
+from pygame import Surface, draw, SRCALPHA
 from src.model.NeuralNet import NeuralNet
 from src.model.activation_functions import sigmoid
 from src.model.initialization_functons import xavier_normal_distribution
@@ -14,6 +14,7 @@ PIPE_WIDTH = 30
 MIN_PIPE_GAP = BIRD_RADIUS * 6
 MAX_PIPE_GAP = 300
 JUMP_STRENGTH = -4
+WHITE = (255, 255, 255)
 
 
 class Pipe:
@@ -65,13 +66,16 @@ class Bird:
         """
         self.brain = NeuralNet(
             4, 4, 1,
-            initialization=xavier_normal_distribution,
+            # initialization=xavier_normal_distribution,
             activation=sigmoid,
             learning_rate=np.float32(.3)
         )
 
     def jump(self):
         self.bird_velocity = JUMP_STRENGTH
+        if self.y < 0 or self.y > self.screen.get_height():
+            self.bird_velocity += self.gravity
+            self.y += self.bird_velocity
 
     def think(self, closest_pipe: Pipe):
         inputs = np.array([
@@ -81,8 +85,6 @@ class Bird:
             (closest_pipe.up_pipe_height + closest_pipe.gap) / self.screen.get_height()
         ])
         action = self.brain.feed_forward(inputs)
-        print("action....")
-        print(action)
         if action > .6:
             self.jump()
 
@@ -98,6 +100,17 @@ class Bird:
         return False
 
     def fly(self) -> None:
-        self.bird_velocity += self.gravity
-        self.y += self.bird_velocity
-        draw.circle(self.screen, self.color, (self.x, self.y), BIRD_RADIUS)
+        # cant go bellow the ground
+        if self.y < self.screen.get_height():
+            self.bird_velocity += self.gravity
+            self.y += self.bird_velocity
+
+        # all of this code for transparency... sigh
+        circle_surface = Surface((BIRD_RADIUS * 2, BIRD_RADIUS * 2), SRCALPHA)
+        transparent_color = self.color + (128,)
+        draw.circle(circle_surface, transparent_color, (BIRD_RADIUS, BIRD_RADIUS), BIRD_RADIUS)
+        self.screen.blit(circle_surface, (self.x - BIRD_RADIUS, self.y - BIRD_RADIUS))
+
+
+def spawn_bird_generation(screen: Surface, gravity, count: int) -> List[Bird]:
+    return [Bird(y=screen.get_height() // 2, screen=screen, gravity=gravity, color=WHITE) for _ in range(count)]

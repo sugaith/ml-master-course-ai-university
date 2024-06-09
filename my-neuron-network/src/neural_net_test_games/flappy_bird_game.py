@@ -1,5 +1,5 @@
 import pygame
-from src.neural_net_test_games.game_objects import Bird, Pipe, PIPE_WIDTH, get_closest_pipe
+from src.neural_net_test_games.game_objects import Bird, Pipe, PIPE_WIDTH, get_closest_pipe, spawn_bird_generation
 
 # Initialize pygame
 pygame.init()
@@ -11,7 +11,7 @@ pygame.display.set_caption("Flappy Bird")
 
 # Colors
 BLACK = (0, 0, 0)
-WHITE = (255, 255, 255, .5)
+WHITE = (255, 255, 255)
 
 # Game variables
 gravity = 0.2
@@ -19,11 +19,16 @@ pipe_velocity = -3
 
 pipes = []
 my_bird = Bird(y=HEIGHT//2, screen=screen, gravity=gravity)
-ai_birds = [Bird(y=HEIGHT//2, screen=screen, gravity=gravity, color=WHITE)]
+AI_BIRDS_COUNT = 18
+ai_birds = spawn_bird_generation(screen, gravity, AI_BIRDS_COUNT)
 
 # Main game loop
 running = True
 clock = pygame.time.Clock()
+
+
+# Font for AI birds count
+font = pygame.font.SysFont(None, 36)
 
 # Create initial pipes
 for i in range(4):
@@ -51,6 +56,14 @@ while running:
 
     # Check for collisions
     # running = not my_bird.does_it_collide(pipes)
+    for ai_bird_i in range(len(ai_birds) - 1, -1, -1):
+        ai_bird = ai_birds[ai_bird_i]
+        if ai_bird.does_it_collide(pipes):
+            ai_birds.pop(ai_bird_i)
+
+    # call next generation if everybody died
+    if len(ai_birds) == 0:
+        ai_birds = spawn_bird_generation(screen, gravity, AI_BIRDS_COUNT)
 
     # FLY THE BIRDS
     my_bird.fly()
@@ -60,6 +73,9 @@ while running:
     # DRAW PIPES
     for pipe in pipes:
         pipe.draw()
+
+    score_text = font.render("ai_birds: " + str(len(ai_birds)), True, WHITE)
+    screen.blit(score_text, (10, 10))
 
     pygame.display.flip()
     clock.tick(60)
