@@ -1,6 +1,7 @@
 import numpy as np
 from src.model.activation_functions import sigmoid, sigmoid_gradient
 from src.model.initialization_functons import INIT_TYPE, xavier_normal_distribution
+import copy
 
 
 class NeuralNet:
@@ -27,6 +28,22 @@ class NeuralNet:
 
         self.activation = activation
         self.learning_rate = learning_rate
+
+    def clone_and_mutate(self, mutation_rate: np.float32):
+        # Clone the current neural network
+        cloned_net = copy.deepcopy(self)
+
+        # Apply mutation to the weights and biases
+        def mutate(array: np.ndarray, rate: np.float32):
+            mutation = np.random.randn(*array.shape) * rate
+            array += mutation
+
+        mutate(cloned_net.weights_inputs2hidden, mutation_rate)
+        mutate(cloned_net.weights_hidden2output, mutation_rate)
+        mutate(cloned_net.hidden_biases, mutation_rate)
+        mutate(cloned_net.output_biases, mutation_rate)
+
+        return cloned_net
 
     def feed_forward(self, inputs: np.ndarray) -> np.ndarray:
         inputs2hidden: np.ndarray = np.matmul(inputs, self.weights_inputs2hidden.T)

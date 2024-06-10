@@ -11,8 +11,8 @@ BIRD_RADIUS = 10
 CYAN = (0, 133, 133)
 RED = (255, 0, 0)
 PIPE_WIDTH = 30
-MIN_PIPE_GAP = BIRD_RADIUS * 6
-MAX_PIPE_GAP = 300
+MIN_PIPE_GAP = BIRD_RADIUS * 2 * 1.5
+MAX_PIPE_GAP = 150
 JUMP_STRENGTH = -4
 WHITE = (255, 255, 255)
 
@@ -51,25 +51,33 @@ def get_closest_pipe(pipes: List[Pipe]) -> Pipe:
 
 
 class Bird:
-    def __init__(self, screen: Surface, gravity: float, y: int, x: int = BIRD_X_POS, color=CYAN) -> None:
-        self.gravity = gravity
-        self.bird_velocity = 0
-        self.color = color
+    def __init__(self,
+                 screen: Surface, gravity: float, y: int = None, x: int = BIRD_X_POS, color=WHITE,
+                 brain: NeuralNet | None = None) -> None:
         self.screen = screen
+        self.color = color
+        self.gravity = gravity
         self.x = x
-        self.y = y
-        """" for now, lets get only the first pipe as input:
+        self.y = screen.get_height() // 2
+        self.bird_velocity = 0
+        """" for now on NeuralNet, lets get only the first pipe as input:
           input1: self y position
           input2: closest pipe x pos
           input3: closest bottom pipe y (or bottom y of gap)
           input4: closest upper pipe y (or top y of gap)
         """
-        self.brain = NeuralNet(
-            4, 4, 1,
-            # initialization=xavier_normal_distribution,
-            activation=sigmoid,
-            learning_rate=np.float32(.3)
-        )
+        if brain is None:
+            self.brain = NeuralNet(
+                4, 4, 1,
+                # initialization=xavier_normal_distribution,
+                activation=sigmoid,
+                learning_rate=np.float32(.3)
+            )
+        else:
+            self.brain = brain
+
+        self.score = 1
+        self.fitness = 0
 
     def jump(self):
         self.bird_velocity = JUMP_STRENGTH
@@ -95,9 +103,11 @@ class Bird:
 
         for pipe in pipes:
             if pipe.x_position < bird_x < pipe.x_position + PIPE_WIDTH:
-                if bird_y_up < pipe.up_pipe_height or bird_y_down > pipe.up_pipe_height + pipe.gap:
+                if not (bird_y_up < pipe.up_pipe_height or bird_y_down > pipe.up_pipe_height + pipe.gap):
+                    self.score += 1
+                    return False
+                else:
                     return True
-        return False
 
     def fly(self) -> None:
         # cant go bellow the ground
@@ -112,5 +122,39 @@ class Bird:
         self.screen.blit(circle_surface, (self.x - BIRD_RADIUS, self.y - BIRD_RADIUS))
 
 
-def spawn_bird_generation(screen: Surface, gravity, count: int) -> List[Bird]:
-    return [Bird(y=screen.get_height() // 2, screen=screen, gravity=gravity, color=WHITE) for _ in range(count)]
+def calc_fitness(population: List[Bird]):
+    score_sum = 0
+    for bird in population:
+        score_sum += bird.score
+
+    for bird in population:
+        bird.fitness = bird.score / score_sum
+
+
+def spawn_bird_generation(screen: Surface, gravity, count: int, previous_gen: None | List[Bird] = None) -> List[Bird]:
+    if previous_gen is None:
+        return [Bird(screen=screen, gravity=gravity) for _ in range(count)]
+
+    calc_fitness(previous_gen)
+    previous_gen.sort(key=lambda dead_bird: dead_bird.fitness, reverse=True)
+
+    best_ones = previous_gen[:9]
+    for i, bird in enumerate(reversed(best_ones)):
+        bird.score += i
+
+    print('previous_gen_count')
+    print(len(previous_gen))
+    previous_gen[:] = previous_gen[:3000]
+
+    next_gen = [*best_ones]
+
+    children_count = (count - len(best_ones)) // len(best_ones)
+
+    mutation_rate = np.float32(.09)
+    for best_one in best_ones:
+        next_gen += [
+            Bird(screen=screen, gravity=gravity, brain=best_one.brain.clone_and_mutate(mutation_rate))
+            for _ in range(children_count)
+        ]
+
+    return next_gen
