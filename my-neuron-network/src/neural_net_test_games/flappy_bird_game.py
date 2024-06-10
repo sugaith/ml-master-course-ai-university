@@ -1,6 +1,6 @@
 import pygame
 from typing import List
-from src.neural_net_test_games.game_objects import Bird, Pipe, PIPE_WIDTH, get_closest_pipe, spawn_bird_generation, BIRD_RADIUS
+from src.neural_net_test_games.game_objects import Bird, Pipe, PIPE_WIDTH, get_closest_pipes, spawn_bird_generation, BIRD_RADIUS
 
 # Initialize pygame
 pygame.init()
@@ -47,7 +47,7 @@ while running:
             my_bird.jump()
 
     for ai_bird in ai_birds:
-        ai_bird.think(get_closest_pipe(pipes))
+        ai_bird.think(get_closest_pipes(pipes))
 
     # Update pipes
     for pipe in pipes:
