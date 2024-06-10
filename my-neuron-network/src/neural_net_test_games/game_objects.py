@@ -141,7 +141,7 @@ class Generation:
         self.count = 0
 
 
-MUTATION_RATE = np.float32(.09)
+MUTATION_RATE = np.float32(.072)
 BEST_ONES_PICK_COUNT = 1
 BEST_ONES_DEAD_POOL = 3600
 GEN = Generation()
@@ -156,7 +156,7 @@ def spawn_bird_generation(screen: Surface, gravity, count: int, previous_gen: No
 
     best_ones = previous_gen[:BEST_ONES_PICK_COUNT]
     for i, bird in enumerate(reversed(best_ones)):
-        bird.score += i**2
+        bird.score += i
 
     GEN.count += 1
     print('GENERATION: ', GEN.count)
