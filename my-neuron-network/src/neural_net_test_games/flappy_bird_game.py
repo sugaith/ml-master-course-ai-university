@@ -16,7 +16,7 @@ WHITE = (255, 255, 255)
 CYAN = (0, 133, 133)
 
 # Game variables
-gravity = 0.2
+gravity = 0.24
 pipe_velocity = -3
 
 pipes = []
@@ -77,9 +77,9 @@ while running:
         pipe.draw()
 
     # FLY THE BIRDS
-    my_bird.fly()
     for ai_bird in ai_birds:
         ai_bird.fly()
+    my_bird.fly()
 
     score_text = font.render("ai_birds: " + str(len(ai_birds)), True, WHITE)
     screen.blit(score_text, (10, 10))
