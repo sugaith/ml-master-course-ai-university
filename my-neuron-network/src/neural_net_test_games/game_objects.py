@@ -143,9 +143,9 @@ class Generation:
         self.count = 0
 
 
-MUTATION_RATE = np.float32(.09)
-BEST_ONES_PICK_COUNT = 6
-BEST_ONES_DEAD_POOL = 900
+MUTATION_RATE = np.float32(.9)
+BEST_ONES_PICK_COUNT = 3
+BEST_ONES_DEAD_POOL = 9
 GEN = Generation()
 
 
@@ -171,7 +171,7 @@ def spawn_bird_generation(screen: Surface, gravity, count: int, previous_gen: No
     children_count = (count - len(best_ones)) // len(best_ones)
     for best_one in best_ones:
         next_gen += [
-            Bird(screen=screen, gravity=gravity, brain=best_one.brain.clone_and_mutate(MUTATION_RATE))
+            Bird(screen=screen, gravity=gravity, brain=best_one.brain.clone_and_mutate(MUTATION_RATE - GEN.count / 36))
             for _ in range(children_count)
         ]
 
