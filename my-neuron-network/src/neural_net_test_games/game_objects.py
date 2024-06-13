@@ -10,7 +10,7 @@ BIRD_RADIUS = 10
 CYAN = (0, 133, 133)
 RED = (255, 0, 0)
 PIPE_WIDTH = 30
-MIN_PIPE_GAP = BIRD_RADIUS * 4
+MIN_PIPE_GAP = BIRD_RADIUS * 9
 MAX_PIPE_GAP = 150
 JUMP_STRENGTH = -4.5
 WHITE = (255, 255, 255)
@@ -88,6 +88,7 @@ class Bird:
     def think(self, ordered_pipes: List[Pipe]):
         closest_pipe = ordered_pipes[0]
         second_closer = ordered_pipes[1]
+
         inputs = np.array([
             self.y / self.screen.get_height(),
             closest_pipe.x_position / self.screen.get_width(),
@@ -97,6 +98,7 @@ class Bird:
             second_closer.up_pipe_height / self.screen.get_height(),
             (second_closer.up_pipe_height + second_closer.gap) / self.screen.get_height(),
         ])
+
         action = self.brain.feed_forward(inputs)
         if action > .5:
             self.jump()
@@ -141,9 +143,9 @@ class Generation:
         self.count = 0
 
 
-MUTATION_RATE = np.float32(.072)
-BEST_ONES_PICK_COUNT = 1
-BEST_ONES_DEAD_POOL = 3600
+MUTATION_RATE = np.float32(.09)
+BEST_ONES_PICK_COUNT = 6
+BEST_ONES_DEAD_POOL = 900
 GEN = Generation()
 
 

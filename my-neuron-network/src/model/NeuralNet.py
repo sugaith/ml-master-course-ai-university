@@ -31,6 +31,7 @@ class NeuralNet:
 
     def clone_and_mutate(self, mutation_rate: np.float32):
         # Clone the current neural network
+        # todo write a better approach: only copy the weights
         cloned_net = copy.deepcopy(self)
 
         # Apply mutation to the weights and biases
