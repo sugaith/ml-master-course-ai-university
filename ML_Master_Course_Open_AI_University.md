@@ -1,60 +1,50 @@
 # Machine Learning Master Course – Open AI University
-**Professor: GPT-4**
 
-## Instructions to GPT:
-- I am your new ML Post Grad Student in your University. You are the best professor in the world regarding this topic. I am your only student. Your school is the world's best in IA, and ML in general.
-- At the end of this course, I must be able to build a model from scratch, and ultimately be a top-notch ML Engineer.
-- We are doing this for a week, and as you (GPT) don't have memory between each session, this is our MEMOIZATION.
-- This is a 100% virtual course. Meaning we have to use resources available on the internet.
-- Prefer videos from YouTube as a resource always when possible, but don't forget to mention standard literature used in similar Universities on the planet.
-
-## Course Summary:
-### Year 1: Foundations and Core Concepts
-#### Semester 1: Foundations
+## Initial Plan:
+### 1: Foundations and Core Concepts
+#### 1.1: Foundations
 - Weeks 1-4: Introduction to Machine Learning, Python basics.
 - Weeks 5-8: Probability, Statistics, and Data Analysis.
 - Weeks 9-12: Algorithms and Data Structures for ML.
 - Weeks 13-16: Introductory Projects and Hands-on Python Exercises.
 
-#### Semester 2: Core ML Concepts
+#### 2.2: Core ML Concepts
 - Weeks 1-4: Supervised and Unsupervised Learning Techniques.
 - Weeks 5-8: Introduction to Neural Networks and Deep Learning.
 - Weeks 9-12: Feature Engineering and Data Preprocessing.
 - Weeks 13-16: Semester Project on a Supervised Learning Problem.
 
-### Year 2: Advanced Topics and Specialization
-#### Semester 3: Advanced ML and Specialized Streams
+### 2: Advanced Topics and Specialization
 - Weeks 1-4: Natural Language Processing and Computer Vision.
 - Weeks 5-8: Reinforcement Learning and Predictive Analytics.
 - Weeks 9-12: Specialization Modules (Choose 1: Healthcare, Finance, Robotics, etc.).
 - Weeks 13-16: Advanced Projects in chosen specialization.
 
-#### Semester 4: Real-World Applications and Capstone Project
+#### 2.1: Real-World Applications and Capstone Project
 - Weeks 1-4: Ethics in AI, Bias and Fairness.
 - Weeks 5-8: Large Scale Machine Learning and Cloud Computing.
 - Weeks 9-16: Capstone Project: From Proposal to Deployment.
 
-### Assessments and Projects
+### 3: Assessments and Projects
 - Bi-weekly quizzes and coding assignments.
 - End of each semester: Comprehensive Take-Home Exams.
 - Capstone Project in the final semester with industry or research-based focus.
 
-### Workshops and Guest Lectures
+### 4: Workshops and Guest Lectures
 - Regular workshops on the latest ML tools and technologies.
 - Guest lectures from industry experts and renowned researchers.
 
----
 
-### For a top-tier program like ours, let's set it up like this:
+### 5: For a top-tier program like ours, let's set it up like this:
 - 3 Lectures per Week: Each lasting about 2 hours, focusing on core concepts, theory, and applications.
 - 1 Practical Session per Week: A 3-hour hands-on lab for coding, working on datasets, and experimenting with algorithms.
 - 1 Seminar or Workshop Every Two Weeks: Guest lectures, industry insights, or soft skills development.
 
 ---
 
-### Week 1: Getting Started with Machine Learning and Python
+### 1: Getting Started with Machine Learning and Python
 
-#### Class 1: Introduction to Machine Learning
+#### Introduction to Machine Learning
 
 **Topic:** Overview of ML, history, key concepts.  
 **Material:**
@@ -63,7 +53,7 @@
 - [x] TensorFlow Playground: https://playground.tensorflow.org/
 - [x] Activity: Discussion on ML's impact in various industries.
 
-#### Class 2: Python Programming Basics
+#### Python Programming Basics
 
 **Topic:** Python syntax, basic data types, control structures.  
 **Material:**
@@ -74,7 +64,7 @@
   - Python basic, SciKit.learn, classification exercises: https://app.datawars.io/dashboard 
 - [x] Activity: Basic Python coding exercises.
 
-#### Class 3: Python for Data Science
+#### Python for Data Science
 
 **Topic:** Introduction to NumPy and Pandas, basic data manipulation.  
 **Material:**
@@ -85,7 +75,7 @@
 
 **Assignments:**
 - [ ] Reading: Chapters from "Python for Data Analysis" by Wes McKinney (e-book or online resource).
-- [ ] Coding Assignment: Simple Python scripts for data handling tasks using learned concepts.
+- [x] Coding Assignment: Simple Python scripts for data handling tasks using learned concepts.
 
 **Additional Resources:**
 - [x] Access to interactive Python courses on platforms like Coursera, Codecademy, or Kaggle.
@@ -93,20 +83,20 @@
 - [x] Forums for Q&A and discussion.
 
 
-### Week 2: Diving Deeper into Machine Learning Concepts
+### 2: Diving Deeper into Machine Learning Concepts
 
 #### Class 4: Introduction to Probability and Statistics
 **Topic:** Basic probability theory, descriptive statistics, and inferential statistics.  
 **Material:**
-- [ ] Video: [Statistics and Probability Full Course || Statistics For Data Science](https://www.youtube.com/watch?v=sbbYntt5CJk)
+- [x] Video: [Statistics and Probability Full Course || Statistics For Data Science](https://www.youtube.com/watch?v=sbbYntt5CJk)
 - [ ] Online Course: Basics of Statistics & Probability on platforms like edX or Khan Academy.
-- [ ] Activity: Applying statistical methods to a sample dataset.
+- [x] Activity: Applying statistical methods to a sample dataset.
 
 #### Class 5: Calculus and Linear Algebra in Machine Learning
 **Topic:** Algebra
 **Material:**
-- [ ] video: [The Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
-- [ ] Video: [Linear Algebra - Math for Machine Learning](https://www.youtube.com/watch?v=uZeDTwWcnuY)
+- [x] video: [The Essence of Calculus](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr)
+- [x] Video: [Linear Algebra - Math for Machine Learning](https://www.youtube.com/watch?v=uZeDTwWcnuY)
 - [x] video: [Understanding Euler Constant](https://www.youtube.com/watch?v=AuA2EAgAegE)
   - [x] video: [Euler Imaginary unit **i** in Compound Interest Context](https://www.youtube.com/watch?v=sKtloBAuP74)
   - [x] video: [Euler Imaginary unit **i** in Geometry Context](https://www.youtube.com/watch?v=v0YEaeIClKY)
@@ -116,17 +106,24 @@
 **Topic:** Structure of Neural-Nets
 **Material:**
 - [x] video: [MIT - Structure of Neural Nets for Deep Learning](https://www.youtube.com/watch?v=sx00s7nYmRM)
-- [ ] video: [MIT - Backpropagation: Find Partial Derivatives](https://www.youtube.com/watch?v=lZrIPRnoGQQ)
+- [x] video: [MIT - Backpropagation: Find Partial Derivatives](https://www.youtube.com/watch?v=lZrIPRnoGQQ)
 - [x] video list: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
+
+
+**Topic:** Activation Functions
+**Material:**
+- [x] sigmoid, sigmoid gradient
+- [x] hyperbolic-tangent
+- [x] ReLU
+- [x] softmax
 
 **Topic:** Transformers
 **Material:**
 - [x] video: [What are Transformers?](https://www.youtube.com/watch?v=zxQyTK8quyY)
-- [ ] Use case: Word Embedding
-  - [ ] self attention (relate words in sentence)
+- [x] Use case: Word Embedding
+  - [x] self attention Paper 
+    - [x] encoder. decoder, position encoders
 
-**Topic:** Activation Functions
-**Material:**
 
 #### Class 7: Back Propagation & Gradient Descent
 **Topic:** Backpropagation introduction
@@ -153,7 +150,7 @@
 - [x] video: [Performance Measures](https://youtu.be/UA_ZAwPVLxg?si=GlmlWtw81d3sYzeL)
 
 
-### Week 3: HANDS ON: build a Neuron Net from scratch
+### 3: HANDS ON: build a Neuron Net from scratch
 
 #### Class 8: Practical - Build a Neural Net from Scratch
 **Material:**
@@ -173,5 +170,11 @@
 
 #### Class 9: Genetic Algorithms
 **Material:**
-- [ ] search..... NEAT - Neuro Evolution of Augmented Topology
-- [ ] search..... PPO - Proximal Policy Optimization
+- [x] research..... NEAT - Neuro Evolution of Augmented Topology
+- [x] research..... PPO - Proximal Policy Optimization
+
+
+### 4: HANDS ON: build DeepNeuralNet with Pytorch and test with a game
+#### Class 10: Pytorch 25hrs Full Course
+**Material:**
+- [-] [PyTorch for Deep Learning & Machine Learning – Full Course](https://www.youtube.com/watch?v=V_xro1bcAuA)

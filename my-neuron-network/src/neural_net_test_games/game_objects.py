@@ -60,13 +60,13 @@ class Bird:
         self.y = screen.get_height() // 2
         self.bird_velocity = 0
         """" for now on NeuralNet, lets get only the 1st and 2nd pipes as input:
-          input1: self y position
-          input2: closest pipe x pos
-          input3: closest bottom pipe y (or bottom y of gap)
-          input4: closest upper pipe y (or top y of gap)
-          input2: closest2 pipe x pos
-          input3: closest2 bottom pipe y (or bottom y of gap)
-          input4: closest2 upper pipe y (or top y of gap)
+          input-1: self y position
+          input-2: closest pipe x pos
+          input-3: closest bottom pipe y (or bottom y of gap)
+          input-4: closest upper pipe y (or top y of gap)
+          input-5: closest2 pipe x pos
+          input-6: closest2 bottom pipe y (or bottom y of gap)
+          input-7: closest2 upper pipe y (or top y of gap)
         """
         if brain is None:
             self.brain = NeuralNet(
