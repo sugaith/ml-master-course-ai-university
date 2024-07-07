@@ -2,28 +2,16 @@
 
 ```angular2html
 neural_network_project/
-│
-├── notebooks/              # Jupyter notebooks for experiments
-|   ├── tests/                  # Unit tests
-│   ├── __init__.py
-│   └── test_network.py
-│
+├
 ├── src/                    # Source code for the project
-│   ├── __init__.py         # Makes src a Python module
-│   ├── data/               # Scripts to download or generate data
-│   │   └── __init__.py     
 │   ├── model/              # Neural network model implementation
-│   │   ├── __init__.py
 │   │   └── Perceptron.py
 │   │   └── neural_net.py
-│   ├── utils/              # Utility functions, e.g., for data preprocessing
-│   │   ├── __init__.py
-│   │   └── preprocess.py
-│   └── main.py             # Entry point of the project
-│
+│   ├── neural_net_test_games/  # Game to test the Neural-net
+│   │   └── ...
+│   ├── perceptron_game_test/  # Game to test the Perceptron
+│   │   └── ...
 ├── requirements.txt        # Project dependencies
-│
-└── README.md               # Project overview and setup instructions
 
 ```
 

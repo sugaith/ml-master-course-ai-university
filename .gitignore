@@ -2,3 +2,5 @@
 my-neuron-network/src/test_game/__pycache__/
 
 my-neuron-network/src/model/__pycache__/
+
+.idea/
