@@ -179,3 +179,10 @@
 **Material:**
 - [x] [Keras with TensorFlow Course - Python Deep Learning and Neural Networks for Beginners Tutorial](https://www.youtube.com/watch?v=qFJeN9V1ZsI)
 - [-] [PyTorch for Deep Learning & Machine Learning – Full Course](https://www.youtube.com/watch?v=V_xro1bcAuA)
+
+#### Class 11: Convolutional NN Architectures
+**Material:**
+- [x] [What is Convolution?](https://www.youtube.com/watch?v=KuXjwB4LzSA)
+- [x] [Convolutional NN Explained](https://www.youtube.com/watch?v=JboZfxUjLSk), [CNN Explained Deeper](https://www.youtube.com/watch?v=jDe5BAsT2-Y)
+- [x] [Correct CNN Animation](https://www.youtube.com/watch?v=w4kNHKcBGzA)
+- [x] [Why 3x3 Kernel is better? History](https://www.youtube.com/watch?v=V9ZYDCnItr0)
