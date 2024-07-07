@@ -177,4 +177,5 @@
 ### 4: HANDS ON: build DeepNeuralNet with Pytorch and test with a game
 #### Class 10: Pytorch 25hrs Full Course
 **Material:**
+- [x] [Keras with TensorFlow Course - Python Deep Learning and Neural Networks for Beginners Tutorial](https://www.youtube.com/watch?v=qFJeN9V1ZsI)
 - [-] [PyTorch for Deep Learning & Machine Learning – Full Course](https://www.youtube.com/watch?v=V_xro1bcAuA)
