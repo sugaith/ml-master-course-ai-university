@@ -186,3 +186,4 @@
 - [x] [Convolutional NN Explained](https://www.youtube.com/watch?v=JboZfxUjLSk), [CNN Explained Deeper](https://www.youtube.com/watch?v=jDe5BAsT2-Y)
 - [x] [Correct CNN Animation](https://www.youtube.com/watch?v=w4kNHKcBGzA)
 - [x] [Why 3x3 Kernel is better? History](https://www.youtube.com/watch?v=V9ZYDCnItr0)
+- [x] [Intuitive view of Kernels working: The moment we stopped understanding AI](https://www.youtube.com/watch?v=UZDiGooFs54)
