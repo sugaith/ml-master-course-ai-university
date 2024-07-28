@@ -1,12 +1,13 @@
 import os
 import logging
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 import openai
 import chromadb
 from datetime import datetime
+import json
 
 # Set up OpenAI API key
-openai.api_key = 'sk-proj-ygt2j1lcN0pCvqP8cMpbT3BlbkFJQE8wVwwRjJWddaY0uDjxaG'
+openai.api_key = '--'
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -79,29 +80,18 @@ def chat():
         completion = openai.ChatCompletion.create(
             model=model,
             messages=messages,
-            max_tokens=150
+            max_tokens=150,
+            stream=True  # Enable streaming
         )
 
-        created_at = datetime.utcnow().isoformat() + 'Z'
-        response_data = {
-            "id": "chatcmpl-123",  # Example id, replace with actual id if available
-            "object": "chat.completion",
-            "created": created_at,
-            "model": model,
-            "choices": [
-                {
-                    "index": 0,
-                    "message": {
-                        "role": "assistant",
-                        "content": completion['choices'][0]['message']['content']
-                    },
-                    "finish_reason": "stop"
-                }
-            ]
-        }
+        def generate():
+            for chunk in completion:
+                content = chunk['choices'][0]['delta'].get('content', '')
+                if content:
+                    yield json.dumps({"message": {"role": "assistant", "content": content}}) + "\n"
 
-        logger.info(f"Chat response: {response_data}")
-        return jsonify(response_data)
+        return Response(generate(), content_type='application/json')
+
     except Exception as e:
         logger.error(f"Error generating chat completion: {e}")
         return jsonify({"error": str(e)}), 500

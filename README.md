@@ -1,4 +1,4 @@
-# Virtual Machine Learning Master Course
+_____# Virtual Machine Learning Master Course
 
 ## Initial Plan:
 ### 1: Foundations and Core Concepts
@@ -165,8 +165,7 @@
 **Material:**
 - [x] training the Perceptron and test with pygame: [Coding Train](https://youtu.be/ntKn5TPHHAk?list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&t=1342)
 - [x] build Neural-net: [Coding Train - Neural Net from Scratch](https://www.youtube.com/watch?v=ntKn5TPHHAk&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=2)
-- [Project HERE](./my-neuron-network/src/model/NeuralNet.py) 
-- =))))))
+- [x] [Project HERE](./my-neuron-network/src/model/NeuralNet.py) =)))))) 
 
 #### Class 9: Genetic Algorithms
 **Material:**
@@ -179,6 +178,7 @@
 **Material:**
 - [x] [Keras with TensorFlow Course - Python Deep Learning and Neural Networks for Beginners Tutorial](https://www.youtube.com/watch?v=qFJeN9V1ZsI)
 - [-] [PyTorch for Deep Learning & Machine Learning – Full Course](https://www.youtube.com/watch?v=V_xro1bcAuA)
+- [-] [PROJECT HERE](...)
 
 #### Class 11: Convolutional NN Architectures
 **Material:**
@@ -187,3 +187,7 @@
 - [x] [Correct CNN Animation](https://www.youtube.com/watch?v=w4kNHKcBGzA)
 - [x] [Why 3x3 Kernel is better? History](https://www.youtube.com/watch?v=V9ZYDCnItr0)
 - [x] [Intuitive view of Kernels working: The moment we stopped understanding AI](https://www.youtube.com/watch?v=UZDiGooFs54)
+
+#### Class 12: Applied RAG
+- [x] LangChain Course - [freeCodeCamp.org](https://www.youtube.com/watch?v=sVcwVQRHIc8)
+- [-] [PROJECT HERE](...)
