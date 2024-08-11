@@ -7,7 +7,7 @@ from datetime import datetime
 import json
 
 # Set up OpenAI API key
-openai.api_key = '--'
+openai.api_key = 'sk-proj---'
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -15,6 +15,24 @@ app = Flask(__name__)
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# Helper function to split text into chunks
+def split_text_into_chunks(text, max_tokens=256):
+    sentences = text.split('.')
+    chunks = []
+    current_chunk = ""
+
+    for sentence in sentences:
+        if len(current_chunk) + len(sentence) < max_tokens:
+            current_chunk += sentence + '.'
+        else:
+            chunks.append(current_chunk)
+            current_chunk = sentence + '.'
+
+    if current_chunk:
+        chunks.append(current_chunk)
+
+    return chunks
 
 # Read documents from markdown files in the 'docs' directory
 documents = []
@@ -28,15 +46,25 @@ for filename in os.listdir(docs_dir):
 client = chromadb.Client()
 collection = client.create_collection(name="docs_model1")
 
-# Store each document in a vector embedding database
-for i, d in enumerate(documents):
-    response = openai.Embedding.create(input=[d], model="text-embedding-ada-002")
-    embedding = response['data'][0]['embedding']
-    collection.add(
-        ids=[str(i)],
-        embeddings=[embedding],
-        documents=[d]
-    )
+# Store each document in a vector embedding database in batches
+batch_size = 1
+for i in range(0, len(documents), batch_size):
+    batch = documents[i:i + batch_size]
+    for j, d in enumerate(batch):
+        logger.info(f"Processing document {i + j + 1}/{len(documents)}")
+        chunks = split_text_into_chunks(d)
+        for k, chunk in enumerate(chunks):
+            try:
+                response = openai.Embedding.create(input=[chunk], model="text-embedding-ada-002")
+                embedding = response['data'][0]['embedding']
+                collection.add(
+                    ids=[f"{i + j}_{k}"],
+                    embeddings=[embedding],
+                    documents=[chunk]
+                )
+                logger.info(f"Processed chunk {k + 1}/{len(chunks)} of document {i + j + 1}")
+            except Exception as e:
+                logger.error(f"Error embedding chunk {k + 1} of document {i + j + 1}: {e}")
 
 @app.route('/')
 def home():
@@ -66,15 +94,17 @@ def chat():
         response = openai.Embedding.create(input=[latest_user_message], model="text-embedding-ada-002")
         query_embedding = response['data'][0]['embedding']
 
-        # Retrieve the most relevant document
+        # Retrieve the most relevant document chunk
         results = collection.query(
             query_embeddings=[query_embedding],
-            n_results=1
+            n_results=9
         )
-        retrieved_document = results['documents'][0]
+        retrieved_documents = results['documents'][0]
 
-        # Add the retrieved document as context to the messages
-        messages.append({"role": "system", "content": f"Relevant document: {retrieved_document}"})
+        logger.info(f"Retrieved documents=====> {retrieved_documents}")
+
+        # Add the retrieved document chunk as context to the messages
+        messages.append({"role": "system", "content": f"Utility-NYC Documents: {retrieved_documents}"})
 
         # Generate chat completion using the messages
         completion = openai.ChatCompletion.create(
