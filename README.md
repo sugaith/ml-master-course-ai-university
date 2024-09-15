@@ -193,7 +193,7 @@ _____# Virtual Machine Learning Master Course
 - [-] [PROJECT HERE](...)
 
 
-#### Class 13: LEETCODE REINFORCEMENT 900 HOURS PLAN
+#### Class 13: LEET-CODE REINFORCEMENT 900 HOURS PLAN
 **Material**
-- [-] [Lecture 5: Binary Search Trees, BST Sort](https://www.youtube.com/watch?v=9Jry5-82I68)
-- [x] [Lecture 4: Heaps and Heap Sort](https://www.youtube.com/watch?v=B7hVxCmfPtM)
+- [-] [MIT - Lecture 5: Binary Search Trees, BST Sort](https://www.youtube.com/watch?v=9Jry5-82I68)
+- [x] [MIT - Lecture 4: Heaps and Heap Sort](https://www.youtube.com/watch?v=B7hVxCmfPtM)
