@@ -2,6 +2,9 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(f"Using device: {device}")
+
 
 def xavier_normal_distribution(weight):
     nn.init.xavier_normal_(weight)
@@ -18,8 +21,8 @@ class NeuralNet(nn.Module):
         self.output_count = output_count
 
         # Define layers
-        self.fc1 = nn.Linear(input_count, hidden_count)
-        self.fc2 = nn.Linear(hidden_count, output_count)
+        self.fc1 = nn.Linear(input_count, hidden_count).to(device)
+        self.fc2 = nn.Linear(hidden_count, output_count).to(device)
 
         # Apply initialization if provided
         if initialization is not None:
@@ -30,7 +33,6 @@ class NeuralNet(nn.Module):
 
         # Activation function
         self.activation = activation
-
         # Optimizer
         self.learning_rate = learning_rate
         self.optimizer = optim.SGD(self.parameters(), lr=learning_rate)
@@ -91,19 +93,19 @@ if __name__ == '__main__':
         initialization=xavier_normal_distribution,
         # activation=torch.sigmoid,
         learning_rate=0.3
-    )
+    ).to(device)
 
     # Print untrained outputs
     print('Untrained output:')
     for data in xor_training_data:
-        output = nn_model.forward(data['inputs'])
+        output = nn_model.forward(data['inputs'].to(device))
         print(f"Input: {data['inputs'].numpy()}, Output: {output.item():}")
 
     # Train the network
-    for epoch in range(900):
+    for epoch in range(90000):
         for data in xor_training_data:
-            inputs = data['inputs']
-            targets = data['targets']
+            inputs = data['inputs'].to(device)
+            targets = data['targets'].to(device)
             nn_model.train_step(inputs, targets)
 
     # Print trained outputs
@@ -111,5 +113,5 @@ if __name__ == '__main__':
     for i in range(3):
         print(f'\nTEST N {i + 1} \n')
         for data in xor_training_data:
-            output = nn_model.forward(data['inputs'])
+            output = nn_model.forward(data['inputs'].to(device))
             print(f"Input: {data['inputs'].numpy()}, Output: {output.item():}")
